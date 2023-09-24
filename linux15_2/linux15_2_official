@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Props the user for a directory name
+echo Enter a directory name:
+read NEW_DIR
+
+# Save original directory so we can return to it (could also use pushd and popd)
+
+ORIG_DIR=$(pwd)
+
+# Check to make sure that the directory doesn't already exist.
+# I'll have to check what [[ -d $NEW_DIR ]] does exactly
+
+[[ -d $NEW_DIR ]] && echo $NEW_DIR already exists, aborting && exit
+mkdir $NEW_DIR
+
+cd $NEW_DIR
+pwd
+
+# Using a touch loop, create empty files and runs ls on them to prove they are empty
+# The same could be achieved with touch file1 file2 file3 file4
+
+for n in 1 2 3 4 
+do 
+	touch file$n
+done
+
+# Here we're looking for files with 5-letter names, using the ? single character wildcard
+
+ls file?
+
+# Put content in the files using echo and redirection
+# note the filecard usage in the loop
+
+for names in file?
+do
+	echo This file is named $names > $names
+done
+
+# Displays their content using cat
+
+cat file?
+
+# Says goodbye and cleans up
+
+cd $ORIG_DIR
+rm -rf $NEW_DIR
+echo "Goodbye My Friend!"
