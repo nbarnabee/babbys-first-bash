@@ -8,5 +8,9 @@ full_string=linux$suffix
 mkdir ${full_string}
 cd ${full_string}
 echo "Coming at you from $(pwd)"
-cd ..
+touch ${full_string}.sh ${full_string}_official.sh
+for file in linux*.sh
+do
+	echo "#!/bin/bash" > $file
+done
 exit 0
