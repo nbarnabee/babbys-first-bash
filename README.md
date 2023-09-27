@@ -1,4 +1,6 @@
 # babbys-first-bash
 Mucking about with Bash scripting
 
-This also includes some solutions for the Labs included in the edX Linux Foundations course
+See the various `/linux*_?` directories for solutions to the Labs included in the edX Linux Foundations course
+
+`./actual` contains simple scripts that I am honest-to-god using on my own machine.
